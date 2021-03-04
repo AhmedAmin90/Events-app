@@ -3,11 +3,22 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.association :user %>
+  <div class="form-inputs m-2">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+ <br>
+  <div class="form-inputs m-2">
+    <%= f.label "The post" %>
+    <%= f.text_area :body %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <br>
+    <div class="form-inputs m-2">
+    <%= f.hidden_field :user_id , value:current_user.id %>
+  </div>
+
+  <div class="form-actions m-2">
+    <%= f.button :submit , class: 'btn btn-primary' %>
   </div>
 <% end %>
