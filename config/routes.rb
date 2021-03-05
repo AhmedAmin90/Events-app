@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :likes
   end
+  resources :users
   resources :events
   resources :events_users
   resources :friendships

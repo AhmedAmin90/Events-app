@@ -21,16 +21,12 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships or /friendships.json
   def create
-    @friend = 
-    @friendship = Friendship.new(user_id: current_user.id , friend_id: @friend.id)
-    @friend_reverse =  
+    @friendship = Friendship.create(user_id: @user.id  , friend_id:  current_user.id, status: nil)
     respond_to do |format|
-      if @friendship.save
-        format.html { redirect_to @friendship, notice: "Friendship was successfully created." }
-        format.json { render :show, status: :created, location: @friendship }
+      if @friendship.save 
+        redirect_to friendship , notice: " You sent a friendship request to #{@user.name} "
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @friendship.errors, status: :unprocessable_entity }
+        redirect_to  friendship, notice: " You can not send a friendship request to #{@user.name} "
       end
     end
   end
@@ -65,6 +61,6 @@ class FriendshipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friendship_params
-      params.fetch(:friendship, {})
+      params.require(:friendship).permit(:user_id, :friend_id, :status)
     end
 end
