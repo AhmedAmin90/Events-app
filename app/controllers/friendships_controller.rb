@@ -21,8 +21,9 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships or /friendships.json
   def create
-    @friendship = Friendship.new(friendship_params)
-
+    @friend = 
+    @friendship = Friendship.new(user_id: current_user.id , friend_id: @friend.id)
+    @friend_reverse =  
     respond_to do |format|
       if @friendship.save
         format.html { redirect_to @friendship, notice: "Friendship was successfully created." }
