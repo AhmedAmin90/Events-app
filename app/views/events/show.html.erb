@@ -15,6 +15,11 @@
   <%= @event.user.name %>
 </p>
 
+<br>
+<p> Attend </p>
+<br>
+<%= attend_delist_btn(@event) %>
+<br>
 <h1> Attendees </h1>
 <%@event.events_users.each do |att| %>
 <%= att.user.name%>
