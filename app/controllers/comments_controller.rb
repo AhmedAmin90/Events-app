@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     if @comment.save
         redirect_to post_path(@post), notice: 'Comment was successfully created.'
       else
-        redirect_to posts_path, alert: @comment.errors.full_messages.join('. ').to_s
+        redirect_to  post_path(@post), alert: @comment.errors.full_messages.join('. ').to_s
       end
     end
 

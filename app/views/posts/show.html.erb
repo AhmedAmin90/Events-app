@@ -21,7 +21,7 @@
 <li> <%= comment.created_at %> </li>
 <% end %>
 </ul>
-
+<%= like_or_dislike_btn(@post) %>
 <%= render 'comments/form' %>
 
 
