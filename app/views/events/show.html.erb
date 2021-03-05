@@ -1,9 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @event.user_id %>
+  <strong>The event:</strong>
+  <%= @event.title %>
 </p>
 
+<p>
+  <strong>The event details:</strong>
+  <%= @event.body %>
+</p>
+
+<p>
+  <strong>The creator :</strong>
+  <%= @event.user.name %>
+</p>
+
+<h1> Attendees </h1>
+<%@event.events_users.each do |att| %>
+<%= att.user.name%>
+<% end %>
+<br>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
